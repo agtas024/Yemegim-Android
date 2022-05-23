@@ -1,8 +1,8 @@
 # **_YemekSepetiRetrofit_**
 
-- **Anasayfa Ekranı**
+## **Anasayfa Ekranı**
 
-<br />
+
 
 ![anasayfa](https://user-images.githubusercontent.com/57559558/169810677-eebffabd-0394-4520-a387-3a0486a9f9c3.png)
 
