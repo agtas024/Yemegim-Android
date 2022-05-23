@@ -1,6 +1,6 @@
 # **_YemekSepetiRetrofit_**
 
-## **Anasayfa Ekranı**
+- ## **Anasayfa Ekranı**
 
 
 
