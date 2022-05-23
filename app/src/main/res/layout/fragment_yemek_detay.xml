@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="siparisAdetliFiyat"
+            type="int" />
+        <variable
+            name="siparisAdedi"
+            type="int" />
+        <variable
+            name="kullanici_adi"
+            type="String" />
+        <variable
+            name="yemekDetayToolbarBaslik"
+            type="String" />
+        <variable
+            name="yemekDetayFragment"
+            type="com.example.yemegim.fragment.YemekDetayFragment" />
+        <variable
+            name="yemekNesnesi"
+            type="com.example.yemegim.entity.Yemekler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backGri"
+        tools:context=".fragment.YemekDetayFragment">
+
+        <TextView
+            android:id="@+id/textViewSiparisAdedi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="64dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/opak2"
+            android:elevation="10dp"
+            android:text='@{"  Seçilen Adet : "+String.valueOf(siparisAdedi)+"  "}'
+            android:textAlignment="center"
+            android:textColor="@color/textGri"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewYemekFiyati" />
+
+        <TextView
+            android:id="@+id/textViewYemekAdi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="64dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/opak2"
+            android:elevation="10dp"
+            android:text='@{"  "+yemekNesnesi.yemek_adi+"  "}'
+            android:textAlignment="center"
+            android:textColor="@color/textGri"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewYemek" />
+
+        <ImageView
+            android:id="@+id/imageViewYemek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/opak2"
+            android:elevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarYemekDetay" />
+
+        <Button
+            android:id="@+id/buttonSil"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/button"
+            android:elevation="5dp"
+            android:textColor="@color/black"
+            android:onClick="@{()->yemekDetayFragment.buttonSil(siparisAdedi, yemekNesnesi.yemek_fiyat)}"
+            android:shadowRadius="500"
+            android:text="-"
+            android:textSize="23dp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonEkle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSiparisAdedi" />
+
+        <Button
+            android:id="@+id/buttonEkle"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/button"
+            android:elevation="5dp"
+            android:onClick="@{()->yemekDetayFragment.buttonEkle(siparisAdedi, yemekNesnesi.yemek_fiyat)}"
+            android:shadowRadius="500"
+            android:text="+"
+            android:textSize="23dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonSil"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSiparisAdedi" />
+
+        <Button
+            android:id="@+id/buttonSepeteEkle"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="64dp"
+            android:background="@drawable/button"
+            android:elevation="5dp"
+            android:onClick="@{()->yemekDetayFragment.buttonSepeteEkle(yemekNesnesi.yemek_adi,yemekNesnesi.yemek_resim_adi, yemekNesnesi.yemek_fiyat, siparisAdedi, kullanici_adi)}"
+            android:shadowRadius="500"
+            android:textColor="@color/black"
+            android:text="SEPETE EKLE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TextViewSecilenFiyat" />
+
+        <TextView
+            android:id="@+id/textViewYemekFiyati"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="128dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="128dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/opak2"
+            android:elevation="10dp"
+            android:text='@{"  Birim Biyatı : "+yemekNesnesi.yemek_fiyat+" ₺  "}'
+            android:textAlignment="center"
+            android:textColor="@color/textGri"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewYemekAdi" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarYemekDetay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@{yemekDetayToolbarBaslik}" />
+
+        <TextView
+            android:id="@+id/TextViewSecilenFiyat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="128dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="128dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/opak2"
+            android:elevation="10dp"
+            android:text='@{"  Toplam Fiyat : "+String.valueOf(siparisAdetliFiyat)+" ₺  "}'
+            android:textAlignment="center"
+            android:textColor="@color/textGri"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonSil" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
